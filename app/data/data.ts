@@ -165,7 +165,7 @@ const projects = [
     ],
     features: ["RabbitMQ", "PostgreSQL", "Clean Arch"],
     year: "2024",
-    picturePath: "/data/projectpreview/DrinkAndGroove.png",
+    picturePath: "/data/projectpreview/DrinkandGroove.png",
     primaryColor: "purple",
   },
   {
