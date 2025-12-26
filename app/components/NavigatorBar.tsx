@@ -5,6 +5,7 @@ import {
   HomeOutlined,
   InstagramOutlined,
   LinkedinOutlined,
+  SpotifyOutlined,
   TrophyOutlined,
 } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
@@ -26,7 +27,6 @@ const IconButton = ({
 }) => {
   return (
     <div className="group relative flex items-center justify-center">
-      {/* Tooltip - Desktop only */}
       <span
         className="
           absolute -top-10
@@ -87,7 +87,6 @@ const NavigatorBar = () => {
         w-fit whitespace-nowrap
       "
     >
-      {/* Main Navigation Group */}
       <div className="flex items-center gap-1 sm:gap-2">
         <IconButton
           icon={<HomeOutlined />}
@@ -104,10 +103,8 @@ const NavigatorBar = () => {
         />
       </div>
 
-      {/* Divider */}
       <div className="h-5 w-px bg-gray-300 mx-1" />
 
-      {/* Social Media Group - flex-nowrap ensures they stay in one line */}
       <div className="flex items-center gap-1 sm:gap-2 flex-nowrap">
         <IconButton
           icon={<LinkedinOutlined />}
@@ -134,6 +131,15 @@ const NavigatorBar = () => {
           label="GitHub"
           hoverGradient="hover:bg-linear-to-br hover:from-gray-800 hover:to-black"
           clickHandler={() => handleClick("https://github.com/itsaofpx")}
+        />
+
+        <IconButton
+        icon={ <SpotifyOutlined />}
+        label="Spotify"
+        hoverGradient="hover:bg-linear-to-br hover:from-green-500 hover:to-green-700"
+        clickHandler={() =>
+          handleClick("https://open.spotify.com/user/31wnv7vgb2tj5xzngjzyb6izg5qy?si=681ff2b8a2b04e9d")
+        }
         />
       </div>
     </section>
