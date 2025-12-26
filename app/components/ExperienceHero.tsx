@@ -8,93 +8,76 @@ const { Title, Text, Paragraph } = Typography;
 const ExperienceHero = () => {
   return (
     <section>
-      <Title level={3}>
+      <Title level={3} className="mb-6">
         Work Experience
       </Title>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 24,
-          position: "relative",
-        }}
-      >
+
+      <div className="flex flex-col gap-6 relative">
         <div className="absolute left-7 top-4 bottom-4 w-0.5 bg-linear-to-b from-gray-200 via-gray-100 to-transparent hidden md:block" />
 
         {jobExperience.map((job, index) => (
           <Card
             key={index}
-            style={{
-              boxShadow: "0 4px 20px rgba(0,0,0,0.02)",
-              background: "linear-gradient(to right, #ffffff, #fafafa)",
-            }}
-            className="z-10"
+            className="z-10 shadow-sm border-none bg-linear-to-r from-white to-gray-50/50"
+            style={{ padding: "16px" }}
           >
-            <Row gutter={24} align="top">
-              <Col>
-                <div className="p-1 bg-white rounded-full shadow-sm border border-gray-100">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-start">
+              <div className="w-full md:w-auto flex justify-start">
+                <div className="p-1 bg-white rounded-full shadow-sm border border-gray-100 shrink-0">
                   <Avatar
                     src={job.picture}
                     size={56}
                     style={{ background: "#fff" }}
                   />
                 </div>
-              </Col>
+              </div>
 
-              <Col flex="1">
-                <Row
-                  justify="space-between"
-                  align="top"
-                  wrap={false}
-                  className="mb-2"
-                >
-                  <Col>
-                    <Text strong style={{ fontSize: 16 }}>
+              <div className="flex-1 w-full">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 mb-2">
+                  <div>
+                    <Text strong className="text-base block">
                       {job.company}
                     </Text>
-                    <Paragraph style={{ margin: 0, color: "#666" }}>
-                      {job.position}
-                    </Paragraph>
+                    <Text className="text-gray-500 block">{job.position}</Text>
                     <Tag
                       color="blue"
-                      style={{ marginTop: 8, borderRadius: 10 }}
+                      className="mt-2 rounded-full border-none px-3 bg-blue-50 text-blue-600"
                     >
                       {job.employmentType}
                     </Tag>
-                  </Col>
+                  </div>
 
-                  <Col style={{ textAlign: "right" }}>
-                    <Text type="secondary" style={{ display: "block" }}>
+                  <div className="mt-2 sm:mt-0 sm:text-right shrink-0">
+                    <Text type="secondary" className="block text-sm">
                       {job.duration}
                     </Text>
-                    <Text type="secondary" style={{ fontSize: 12 }}>
+                    <Text type="secondary" className="text-xs">
                       {job.location}
                     </Text>
-                  </Col>
-                </Row>
+                  </div>
+                </div>
 
                 <Collapse
                   ghost
                   expandIconPlacement="start"
                   bordered={false}
+                  className="experience-collapse -ml-3"
                   items={[
                     {
                       key: "1",
                       label: (
-                        <span className="text-gray-400 hover:text-blue-500 transition-colors text-sm">
+                        <span className="text-gray-400 hover:text-blue-500 transition-colors text-xs font-medium uppercase tracking-wider">
                           See responsibilities
                         </span>
                       ),
                       children: (
-                        <div style={{ marginLeft: 16 }}>
+                        <div className="ml-2 mt-1 flex flex-col gap-2">
                           {job.description.map((d, i) => (
-                            <div
-                              key={i}
-                              className="flex items-start gap-3 mb-2"
-                            >
-                              {/* Gradient Bullet dot */}
+                            <div key={i} className="flex items-start gap-3">
                               <span className="w-1.5 h-1.5 mt-2 rounded-full shrink-0 bg-linear-to-br from-gray-400 to-gray-600"></span>
-                              <Text style={{ color: "#444" }}>{d}</Text>
+                              <Text className="text-gray-600 text-sm leading-relaxed">
+                                {d}
+                              </Text>
                             </div>
                           ))}
                         </div>
@@ -102,8 +85,8 @@ const ExperienceHero = () => {
                     },
                   ]}
                 />
-              </Col>
-            </Row>
+              </div>
+            </div>
           </Card>
         ))}
       </div>

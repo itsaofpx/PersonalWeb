@@ -1,17 +1,17 @@
 "use client";
 
-import Icon, {
+import {
   GithubOutlined,
   HomeOutlined,
   InstagramOutlined,
   LinkedinOutlined,
   TrophyOutlined,
 } from "@ant-design/icons";
-import { Row } from "antd";
 import { useRouter } from "next/navigation";
 
+// Tighter sizing for mobile (w-9) scaling up to desktop (sm:w-11)
 const iconStyle =
-  "flex items-center justify-center w-11 h-11 rounded-full transition-all duration-300 cursor-pointer text-gray-600 hover:text-white hover:shadow-md";
+  "flex items-center justify-center w-9 h-9 sm:w-11 sm:h-11 rounded-full transition-all duration-300 cursor-pointer text-gray-600 hover:text-white hover:shadow-md";
 
 const IconButton = ({
   icon,
@@ -26,6 +26,7 @@ const IconButton = ({
 }) => {
   return (
     <div className="group relative flex items-center justify-center">
+      {/* Tooltip - Desktop only */}
       <span
         className="
           absolute -top-10
@@ -33,11 +34,12 @@ const IconButton = ({
           bg-gray-800 text-white rounded-full
           opacity-0 translate-y-2
           transition-all duration-200
-          group-hover:opacity-100
-          group-hover:translate-y-0
+          hidden sm:group-hover:block sm:group-hover:opacity-100
+          sm:group-hover:translate-y-0
           pointer-events-none
           whitespace-nowrap
           shadow-lg
+          z-60
         "
       >
         {label}
@@ -49,11 +51,13 @@ const IconButton = ({
         className={`
           ${iconStyle}
           ${hoverGradient}
-          group-hover:scale-110
+          hover:scale-110
           active:scale-95
         `}
       >
-        {icon}
+        <div className="text-[16px] sm:text-[20px] flex items-center justify-center">
+          {icon}
+        </div>
       </div>
     </div>
   );
@@ -61,40 +65,52 @@ const IconButton = ({
 
 const NavigatorBar = () => {
   const router = useRouter();
+
   const handleClick = (url: string) => {
-    router.push(url);
+    if (url.startsWith("http")) {
+      window.open(url, "_blank");
+    } else {
+      router.push(url);
+    }
   };
+
   return (
     <section
       className="
-        fixed bottom-8 left-1/2 -translate-x-1/2
-        flex items-center gap-4
+        fixed bottom-6 left-1/2 -translate-x-1/2
+        flex items-center gap-1 sm:gap-4
         bg-white/80 backdrop-blur-xl saturate-150
-        px-4 py-2
+        px-2 py-2 sm:px-4
         rounded-full
         shadow-2xl border border-white/40
         z-50
+        w-fit whitespace-nowrap
       "
     >
-      <IconButton
-        icon={<HomeOutlined style={{ fontSize: 20 }} />}
-        label="Home"
-        hoverGradient="hover:bg-linear-to-br hover:from-gray-700 hover:to-gray-900"
-        clickHandler={() => handleClick("/")}
-      />
-
-      <IconButton
-        icon={<TrophyOutlined style={{ fontSize: 20 }} />}
-        label="Certifications"
-        hoverGradient="hover:bg-linear-to-br hover:from-yellow-400 hover:to-yellow-600"
-        clickHandler={() => handleClick("/cert")}
-      />
-
-      <div className="h-6 w-px bg-gray-200" />
-
-      <Row style={{ gap: 8 }}>
+      {/* Main Navigation Group */}
+      <div className="flex items-center gap-1 sm:gap-2">
         <IconButton
-          icon={<LinkedinOutlined style={{ fontSize: 20 }} />}
+          icon={<HomeOutlined />}
+          label="Home"
+          hoverGradient="hover:bg-linear-to-br hover:from-gray-700 hover:to-gray-900"
+          clickHandler={() => handleClick("/")}
+        />
+
+        <IconButton
+          icon={<TrophyOutlined />}
+          label="Certifications"
+          hoverGradient="hover:bg-linear-to-br hover:from-yellow-400 hover:to-yellow-600"
+          clickHandler={() => handleClick("/cert")}
+        />
+      </div>
+
+      {/* Divider */}
+      <div className="h-5 w-px bg-gray-300 mx-1" />
+
+      {/* Social Media Group - flex-nowrap ensures they stay in one line */}
+      <div className="flex items-center gap-1 sm:gap-2 flex-nowrap">
+        <IconButton
+          icon={<LinkedinOutlined />}
           label="LinkedIn"
           hoverGradient="hover:bg-linear-to-br hover:from-blue-500 hover:to-blue-700"
           clickHandler={() =>
@@ -105,7 +121,7 @@ const NavigatorBar = () => {
         />
 
         <IconButton
-          icon={<InstagramOutlined style={{ fontSize: 20 }} />}
+          icon={<InstagramOutlined />}
           label="Instagram"
           hoverGradient="hover:bg-linear-to-br hover:from-purple-500 hover:to-pink-500"
           clickHandler={() =>
@@ -114,12 +130,12 @@ const NavigatorBar = () => {
         />
 
         <IconButton
-          icon={<GithubOutlined style={{ fontSize: 20 }} />}
+          icon={<GithubOutlined />}
           label="GitHub"
           hoverGradient="hover:bg-linear-to-br hover:from-gray-800 hover:to-black"
           clickHandler={() => handleClick("https://github.com/itsaofpx")}
         />
-      </Row>
+      </div>
     </section>
   );
 };
