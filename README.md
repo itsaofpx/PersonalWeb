@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Personal Blog & Portfolio Website
 
-## Getting Started
+This repository contains the source code for my **personal blog and portfolio website**.  
+The website is a space where I document my **journey, experiences, and growth** as a software developer — both technically and personally.
 
-First, run the development server:
+## ✨ Purpose
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This website is not just a portfolio, but a **living record of my journey**:
+- My learning path in software engineering
+- Projects I have built and problems I have solved
+- Certifications, experiences, and milestones
+- Thoughts, reflections, and lessons learned along the way
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+It represents how I think, how I design, and how I grow over time.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠 Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Next.js** (App Router)
+- **TypeScript**
+- **React**
+- **Ant Design**
+- **Tailwind CSS**
+- **Modern UI/UX principles**
 
-## Learn More
+## 📌 Features
 
-To learn more about Next.js, take a look at the following resources:
+- Personal profile & introduction
+- Experience and project showcase
+- Certifications with visual previews
+- Clean, minimal, and responsive design
+- Scalable structure for future blog posts and content
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚀 Philosophy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+I believe in:
+- Learning by building
+- Taking risks early to compound growth
+- Writing code that is clean, readable, and purposeful
+- Designing systems that scale — both technically and personally
 
-## Deploy on Vercel
+This website evolves as I evolve.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📂 Status
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is **actively maintained** and will continue to grow as I gain more experience and explore new technologies.
+
+---
+
+> “Your past builds the foundation. Your present compounds it. Your future reflects it.”
