@@ -4,6 +4,7 @@ import { Card, Col, Row, Typography, Tag, Modal } from "antd";
 import { SafetyCertificateOutlined, EyeOutlined } from "@ant-design/icons";
 import Image from "next/image";
 import { useState } from "react";
+import { certs } from "../data/data";
 
 const { Title, Text } = Typography;
 
@@ -12,56 +13,12 @@ export const CertHero = () => {
   const [previewImage, setPreviewImage] = useState("");
   const [previewTitle, setPreviewTitle] = useState("");
 
-  const certs = [
-    {
-      title: "Microservices Architecture",
-      previewPath: "/data/certs/microservices.png",
-      provider: "FutureSkill",
-      year: "2025",
-      skillTag: ["Microservices Design", "API Gateway", "System Design"],
-      color: "blue",
-    },
-    {
-      title: "Complete Guide to Kubernetes",
-      previewPath: "/data/certs/kubernetes.png",
-      provider: "FutureSkill",
-      year: "2025",
-      skillTag: ["Kubernetes Cluster", "Docker Orchestration", "Linux"],
-      color: "cyan",
-    },
-    {
-      title: "Hands-On DevOps",
-      previewPath: "/data/certs/devops.png",
-      provider: "FutureSkill",
-      year: "2025",
-      skillTag: ["CI/CD Pipelines", "Monitoring & Logging", "Docker Hub"],
-      color: "purple",
-    },
-    {
-      title: "Advance Topic Beyond DevOps",
-      previewPath: "/data/certs/advdevops.png",
-      provider: "FutureSkill",
-      year: "2025",
-      skillTag: ["Message Brokers", "IaC", "DevSecOps"],
-      color: "magenta",
-    },
-    {
-      title: "Docker for Real World Projects",
-      previewPath: "/data/certs/docker.png",
-      provider: "FutureSkill",
-      year: "2025",
-      skillTag: ["Containerization", "Docker Compose", "Optimization"],
-      color: "blue",
-    },
-  ];
-
   const openPreview = (cert: any) => {
     setPreviewImage(cert.previewPath);
     setPreviewTitle(cert.title);
     setPreviewOpen(true);
   };
 
-  // Helper for consistent gradient tags
   const getGradient = (color: string) => {
     switch (color) {
       case "blue":
@@ -83,8 +40,7 @@ export const CertHero = () => {
         <Title level={3} style={{ margin: 0 }}>
           Certifications
         </Title>
-        {/* Gradient Underline */}
-        <div className="h-1 w-16 bg-linear-to-r from-orange-400 to-red-400 rounded-full mt-2" />
+        <div className="h-1 w-16 bg-linear-r from-orange-400 to-red-400 rounded-full mt-2" />
       </div>
 
       <Row gutter={[24, 24]}>
@@ -98,10 +54,14 @@ export const CertHero = () => {
                 height: "100%",
                 boxShadow: "0 4px 20px rgba(0,0,0,0.03)",
                 overflow: "hidden",
+                border: "none",
               }}
               className="group transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
               cover={
-                <div className="relative h-48 w-full bg-gray-50 overflow-hidden group-hover:bg-gray-100 transition-colors">
+                <div
+                  className="relative w-full bg-gray-50 overflow-hidden group-hover:bg-gray-100 transition-colors"
+                  style={{ height: 192, position: "relative" }}
+                >
                   {/* View Icon Overlay */}
                   <div className="absolute inset-0 flex items-center justify-center bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity z-10">
                     <div className="bg-white/90 backdrop-blur px-3 py-1 rounded-full shadow-sm text-xs font-medium text-gray-700 flex items-center gap-2">
@@ -113,14 +73,14 @@ export const CertHero = () => {
                     src={cert.previewPath}
                     alt={cert.title}
                     fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes="(max-width: 768px) 100vw, 500px"
                     className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+                    priority={index < 2}
                   />
                 </div>
               }
             >
               <div className="flex flex-col h-full gap-3">
-                {/* Header */}
                 <div className="flex justify-between items-start">
                   <div className="flex-1">
                     <Title
@@ -136,19 +96,16 @@ export const CertHero = () => {
                       <SafetyCertificateOutlined /> {cert.provider}
                     </Text>
                   </div>
-                  <Tag
-                    className="m-0 bg-gray-100 text-gray-500 rounded-md font-medium"
-                  >
+                  <Tag className="m-0 bg-gray-100 text-gray-500 rounded-md font-medium border-0">
                     {cert.year}
                   </Tag>
                 </div>
 
-                {/* Tags */}
                 <div className="mt-auto pt-3 border-t border-gray-50 flex flex-wrap gap-2">
-                  {cert.skillTag.map((skill, i) => (
+                  {cert.skillTag.map((skill: string, i: number) => (
                     <span
                       key={i}
-                      className={`text-[10px] px-2 py-1 rounded-md border bg-linear-to-br ${getGradient(
+                      className={`text-[10px] px-2 py-1 rounded-md border bg-linear-br ${getGradient(
                         cert.color || "blue"
                       )}`}
                     >

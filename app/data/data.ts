@@ -1,4 +1,4 @@
-export const jobExperience = [
+const jobExperience = [
   {
     company: "National Central University",
     position: "Researcher",
@@ -43,29 +43,74 @@ export const jobExperience = [
   },
 ];
 
-export const education = {
-    school: "Kasetsart University",
-    degree: "Bachelor's Degree in Computer Science",
-    duration: "2022 - 2026",
-    gpax: "3.46 / 4.00",
-    courses: [
-      "Data Structures and Algorithms",
-      "Database Systems",
-      "Operating Systems",
-      "Computer Networks",
-      "Software Development",
-      "Agile and DevOps",
-      "Artificial Intelligence",
-      "Machine Learning",
-      "Mobile Application Development",
-      "Cloud Computing",
-      "Computer Architecture",
-    ],
-    description: [
-      "Active member of the Computer Science Lab, participating in research projects and academic activities related to computer science.",
-      "Achieved semi-finalist status in the 2024 National Software Contest (NSC), organized by the Ministry of Higher Education, Science, Research and Innovation (MHESI) of Thailand.",
-      "Recipient of a scholarship to attend an international cooperative program at National Central University in Taiwan for one semester.",
-    ],
-    picture:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkfJWYQ2CPlhNZaEk3SMAQluD0_fUwdTHWEw&s",
-  };
+const education = {
+  school: "Kasetsart University",
+  degree: "Bachelor's Degree in Computer Science",
+  duration: "2022 - 2026",
+  gpax: "3.46 / 4.00",
+  courses: [
+    "Data Structures and Algorithms",
+    "Database Systems",
+    "Operating Systems",
+    "Computer Networks",
+    "Software Development",
+    "Agile and DevOps",
+    "Artificial Intelligence",
+    "Machine Learning",
+    "Mobile Application Development",
+    "Cloud Computing",
+    "Computer Architecture",
+  ],
+  description: [
+    "Active member of the Computer Science Lab, participating in research projects and academic activities related to computer science.",
+    "Achieved semi-finalist status in the 2024 National Software Contest (NSC), organized by the Ministry of Higher Education, Science, Research and Innovation (MHESI) of Thailand.",
+    "Recipient of a scholarship to attend an international cooperative program at National Central University in Taiwan for one semester.",
+  ],
+  picture:
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkfJWYQ2CPlhNZaEk3SMAQluD0_fUwdTHWEw&s",
+};
+
+const certs = [
+  {
+    title: "Microservices Architecture",
+    previewPath: "/data/certs/microservices.png",
+    provider: "FutureSkill",
+    year: "2025",
+    skillTag: ["Microservices Design", "API Gateway", "System Design"],
+    color: "blue",
+  },
+  {
+    title: "Complete Guide to Kubernetes",
+    previewPath: "/data/certs/kubernetes.png",
+    provider: "FutureSkill",
+    year: "2025",
+    skillTag: ["Kubernetes Cluster", "Docker Orchestration", "Linux"],
+    color: "cyan",
+  },
+  {
+    title: "Hands-On DevOps",
+    previewPath: "/data/certs/devops.png",
+    provider: "FutureSkill",
+    year: "2025",
+    skillTag: ["CI/CD Pipelines", "Monitoring & Logging", "Docker Hub"],
+    color: "purple",
+  },
+  {
+    title: "Advance Topic Beyond DevOps",
+    previewPath: "/data/certs/advdevops.png",
+    provider: "FutureSkill",
+    year: "2025",
+    skillTag: ["Message Brokers", "IaC", "DevSecOps"],
+    color: "magenta",
+  },
+  {
+    title: "Docker for Real World Projects",
+    previewPath: "/data/certs/docker.png",
+    provider: "FutureSkill",
+    year: "2025",
+    skillTag: ["Containerization", "Docker Compose", "Optimization"],
+    color: "blue",
+  },
+];
+
+export { certs, education, jobExperience };

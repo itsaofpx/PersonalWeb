@@ -194,6 +194,9 @@ export const ProjectHero = () => {
                       background: "#f8fafc",
                       color: "#64748b",
                       alignItems: "center",
+                      display: "flex",
+                      gap: 4,
+                      border: "none",
                     }}
                   >
                     {project.year}
