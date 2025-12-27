@@ -38,7 +38,8 @@ const jobExperience = [
     ],
     employmentType: "Internship",
     picture:
-      "https://media.licdn.com/dms/image/v2/D560BAQHIQdclkGuWwQ/company-logo_200_200/company-logo_200_200/0/1682226805577/futureskill_logo?e=2147483647&v=beta&t=Z8AI2mE3_cerbsqNlVJP3ZOzbISALhKZpQTr-zc2jOU",
+      // "https://media.licdn.com/dms/image/v2/D560BAQHIQdclkGuWwQ/company-logo_200_200/company-logo_200_200/0/1682226805577/futureskill_logo?e=2147483647&v=beta&t=Z8AI2mE3_cerbsqNlVJP3ZOzbISALhKZpQTr-zc2jOU",
+      "https://assets.futureskill.co/business%2Feb269202-7dcc-444f-a692-d1b6701e5960.webp",
     location: "Bangkok, Thailand",
   },
 ];

@@ -23,10 +23,11 @@ const ExperienceHero = () => {
           >
             <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-start">
               <div className="w-full md:w-auto flex justify-start">
-                <div className="p-1 bg-white rounded-full shadow-sm border border-gray-100 shrink-0">
+                <div className="p-1 bg-white shrink-0">
                   <Avatar
                     src={job.picture}
-                    size={56}
+                    size={100}
+                    shape="square"
                     style={{ background: "#fff" }}
                   />
                 </div>
