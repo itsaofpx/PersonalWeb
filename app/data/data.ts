@@ -9,7 +9,8 @@ const jobExperience = [
       "Collaborated with Thai Life Insurance stakeholders to refine requirements and ensure alignment",
     ],
     employmentType: "Internship",
-    picture: "https://positioningmag.com/wp-content/uploads/2022/01/1-1.png",
+    picture:
+      "https://media.licdn.com/dms/image/v2/D560BAQEG_J85qNHm0g/company-logo_200_200/B56ZwoQaiyJoAI-/0/1770201918290/bluebikgroup_logo?e=2147483647&v=beta&t=A-RWynkLl_269F7j1P3VeCtvJg6Fd0NG2fj99lv1LSw",
     location: "Bangkok, Thailand",
   },
   {
@@ -37,7 +38,7 @@ const jobExperience = [
     ],
     employmentType: "Internship",
     picture:
-      "https://cdn-1.webcatalog.io/catalog/myorder/myorder-icon-filled-256.png?v=1714780307722",
+      "https://play-lh.googleusercontent.com/_q3qzp-eau5rm879Uox1w7N0poIcfsTxzbdrkvJsZFE6DMrKGg_v3CEvasbgY3wOlQ=w240-h480-rw",
     location: "Bangkok, Thailand",
   },
   {

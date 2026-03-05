@@ -12,7 +12,10 @@ const employmentColors: Record<string, { bg: string; text: string; border: strin
 type Job = (typeof jobExperience)[number];
 
 const JobResponsibilities = ({ description }: { description: string[] }) => (
-  <div className="mt-3 pt-3 border-t border-[#f0ece7]">
+  <div className="mt-1 pt-1">
+    {/* gradient divider */}
+    <div className="h-px w-full bg-gradient-to-r from-[#cdc9c3] to-[#ede9e3] mb-/"></div>
+
     <Collapse
       ghost
       bordered={false}
@@ -27,7 +30,9 @@ const JobResponsibilities = ({ description }: { description: string[] }) => (
               {description.map((d, i) => (
                 <div key={i} className="flex gap-2.5 items-start">
                   <div className="w-[5px] h-[5px] rounded-full bg-[#c8a882] flex-shrink-0 mt-[7px]" />
-                  <p className="text-[13px] text-[#6b5a4e] m-0 leading-[1.6]">{d}</p>
+                  <p className="text-[13px] text-[#6b5a4e] m-0 leading-[1.6]">
+                    {d}
+                  </p>
                 </div>
               ))}
             </div>
@@ -39,7 +44,7 @@ const JobResponsibilities = ({ description }: { description: string[] }) => (
 );
 
 const VerticalDivider = () => (
-  <div className="w-px self-stretch bg-gradient-to-b from-[#ede9e3] to-transparent rounded-full flex-shrink-0" />
+  <div className="w-px self-stretch bg-gradient-to-b from-[#ede9e3] to-transparent rounded-full flex-shrink-0 ml-1 mr-4" />
 );
 
 const EmploymentTag = ({ type }: { type: string }) => {
@@ -55,7 +60,7 @@ const EmploymentTag = ({ type }: { type: string }) => {
 };
 
 const DesktopJobCard = ({ job }: { job: Job }) => (
-  <div className="hidden sm:flex items-start gap-5">
+  <div className="hidden sm:flex items-start">
     {/* Logo */}
     <div className="w-24 h-24 flex-shrink-0 flex items-center justify-center">
       <img src={job.picture} alt={job.company} className="w-full h-full object-cover" />
