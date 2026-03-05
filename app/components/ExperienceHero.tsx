@@ -149,7 +149,7 @@ const MobileGroupCard = ({ group }: { group: GroupedCompany }) => (
     <div className="flex-1 min-w-0">
       {/* Company header */}
       <div className="mb-3">
-        <p className="text-[15px] text-[#2d2520] m-0 font-semibold" style={{ fontFamily: "var(--font-display)" }}>
+        <p className="text-[15px] text-[#2d2520] m-0 font-semibold tracking-wide" style={{ fontFamily: "var(--font-display)" }}>
           {group.company}
         </p>
         {group.roles.length > 1 && (
