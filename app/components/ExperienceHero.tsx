@@ -1,94 +1,148 @@
 "use client";
 
-import { Card, Typography, Avatar, Tag, Collapse, Row, Col } from "antd";
+import { Collapse } from "antd";
 import { jobExperience } from "../data/data";
 
-const { Title, Text, Paragraph } = Typography;
+const employmentColors: Record<string, { bg: string; text: string; border: string }> = {
+  Internship: { bg: "#eef4ff", text: "#3b6fd4", border: "#c5d9f9" },
+  Exchange: { bg: "#fff7ed", text: "#c2700f", border: "#f9d9a8" },
+  default: { bg: "#edfbf3", text: "#2e7d5c", border: "#b6e8d0" },
+};
+
+type Job = (typeof jobExperience)[number];
+
+const JobResponsibilities = ({ description }: { description: string[] }) => (
+  <div className="mt-3 pt-3 border-t border-[#f0ece7]">
+    <Collapse
+      ghost
+      bordered={false}
+      className="exp-collapse"
+      style={{ marginLeft: 4 }}
+      items={[
+        {
+          key: "1",
+          label: <span className="collapse-label">See responsibilities</span>,
+          children: (
+            <div className="flex flex-col gap-2 pl-1 pt-1">
+              {description.map((d, i) => (
+                <div key={i} className="flex gap-2.5 items-start">
+                  <div className="w-[5px] h-[5px] rounded-full bg-[#c8a882] flex-shrink-0 mt-[7px]" />
+                  <p className="text-[13px] text-[#6b5a4e] m-0 leading-[1.6]">{d}</p>
+                </div>
+              ))}
+            </div>
+          ),
+        },
+      ]}
+    />
+  </div>
+);
+
+const VerticalDivider = () => (
+  <div className="w-px self-stretch bg-gradient-to-b from-[#ede9e3] to-transparent rounded-full flex-shrink-0" />
+);
+
+const EmploymentTag = ({ type }: { type: string }) => {
+  const tagStyle = employmentColors[type] || employmentColors.default;
+  return (
+    <span
+      className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full tracking-[0.3px] inline-block"
+      style={{ background: tagStyle.bg, color: tagStyle.text, border: `1px solid ${tagStyle.border}` }}
+    >
+      {type}
+    </span>
+  );
+};
+
+const DesktopJobCard = ({ job }: { job: Job }) => (
+  <div className="hidden sm:flex items-start gap-5">
+    {/* Logo */}
+    <div className="w-24 h-24 flex-shrink-0 flex items-center justify-center">
+      <img src={job.picture} alt={job.company} className="w-full h-full object-cover" />
+    </div>
+
+    <VerticalDivider />
+
+    {/* Content */}
+    <div className="flex-1 min-w-0">
+      {/* Row 1: Company ---- Duration */}
+      <div className="flex items-baseline justify-between">
+        <div className="text-[16px] text-[#2d2520] m-0 leading-snug font-semibold truncate tracking-wider" style={{ fontFamily: "var(--font-display)" }}>
+          {job.company}
+        </div>
+        <span className="text-[11px] text-[#a89880] bg-[#f5f0ea] border border-[#ede9e3] px-2.5 py-0.5 rounded-md flex-shrink-0 font-medium whitespace-nowrap">
+          {job.duration}
+        </span>
+      </div>
+
+      {/* Row 2: Position ---- Location */}
+      <div className="flex items-baseline justify-between gap-2 mt-0.5">
+        <div className="text-[13px] text-[#4a3728] m-0 font-semibold truncate">
+          {job.position}
+        </div>
+        <span className="text-[11px] text-[#b0a090] flex-shrink-0 whitespace-nowrap">
+          {job.location}
+        </span>
+      </div>
+
+      {/* Row 3: Employment tag */}
+      <div className="mt-2">
+        <EmploymentTag type={job.employmentType} />
+      </div>
+    </div>
+  </div>
+);
+
+const MobileJobCard = ({ job }: { job: Job }) => (
+  <div className="flex sm:hidden items-start gap-4">
+    {/* Logo */}
+    <div className="w-20 h-20 overflow-hidden flex-shrink-0 flex items-center justify-center">
+      <img src={job.picture} alt={job.company} className="w-full h-full object-cover" />
+    </div>
+
+    <VerticalDivider />
+
+    {/* Stacked content */}
+    <div className="flex-1 min-w-0">
+      <div className="text-[15px] text-[#2d2520] m-0 leading-snug font-semibold" style={{ fontFamily: "var(--font-display)" }}>
+        {job.company}
+      </div>
+
+      <p className="text-[11px] text-[#b0a090] flex-shrink-0 whitespace-nowrap">{job.location}</p>
+
+      <div className="text-[13px] text-[#4a3728] m-0 mt-0.5 font-semibold">
+        {job.position}
+      </div>
+
+      <div className="flex items-center gap-1.5 mt-1.5 flex-wrap">
+        <span className="text-[11px] text-[#a89880] bg-[#f5f0ea] border border-[#ede9e3] px-2 py-0.5 rounded-md font-medium">
+          {job.duration}
+        </span>
+      </div>
+
+      <div className="mt-2">
+        <EmploymentTag type={job.employmentType} />
+      </div>
+    </div>
+  </div>
+);
 
 const ExperienceHero = () => {
   return (
     <section>
-      <Title level={3} className="mb-6">
-        Work Experience
-      </Title>
+      <div className="mb-7">
+        <h2 className="section-heading">Work Experience</h2>
+        <div className="section-rule" />
+      </div>
 
-      <div className="flex flex-col gap-6 relative">
-        <div className="absolute left-7 top-4 bottom-4 w-0.5 bg-linear-to-b from-gray-200 via-gray-100 to-transparent hidden md:block" />
-
+      <div className="flex flex-col gap-3">
         {jobExperience.map((job, index) => (
-          <Card
-            key={index}
-            className="z-10 shadow-sm border-none bg-linear-to-r from-white to-gray-50/50"
-            style={{ padding: "16px" }}
-          >
-            <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-start">
-              <div className="w-full md:w-auto flex justify-start">
-                <div className="p-1 bg-white shrink-0">
-                  <Avatar
-                    src={job.picture}
-                    size={100}
-                    shape="square"
-                    style={{ background: "#fff" }}
-                  />
-                </div>
-              </div>
-
-              <div className="flex-1 w-full">
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 mb-2">
-                  <div>
-                    <Text strong className="text-base block">
-                      {job.company}
-                    </Text>
-                    <Text className="text-gray-500 block">{job.position}</Text>
-                    <Tag
-                      color="blue"
-                      className="mt-2 rounded-full border-none px-3 bg-blue-50 text-blue-600"
-                    >
-                      {job.employmentType}
-                    </Tag>
-                  </div>
-
-                  <div className="mt-2 sm:mt-0 sm:text-right shrink-0">
-                    <Text type="secondary" className="block text-sm">
-                      {job.duration}
-                    </Text>
-                    <Text type="secondary" className="text-xs">
-                      {job.location}
-                    </Text>
-                  </div>
-                </div>
-
-                <Collapse
-                  ghost
-                  expandIconPlacement="start"
-                  bordered={false}
-                  className="experience-collapse -ml-3"
-                  items={[
-                    {
-                      key: "1",
-                      label: (
-                        <span className="text-gray-400 hover:text-blue-500 transition-colors text-xs font-medium uppercase tracking-wider">
-                          See responsibilities
-                        </span>
-                      ),
-                      children: (
-                        <div className="ml-2 mt-1 flex flex-col gap-2">
-                          {job.description.map((d, i) => (
-                            <div key={i} className="flex items-start gap-3">
-                              <span className="w-1.5 h-1.5 mt-2 rounded-full shrink-0 bg-linear-to-br from-gray-400 to-gray-600"></span>
-                              <Text className="text-gray-600 text-sm leading-relaxed">
-                                {d}
-                              </Text>
-                            </div>
-                          ))}
-                        </div>
-                      ),
-                    },
-                  ]}
-                />
-              </div>
-            </div>
-          </Card>
+          <div key={index} className="exp-card">
+            <div className="card-accent-bar" />
+            <DesktopJobCard job={job} />
+            <MobileJobCard job={job} />
+            <JobResponsibilities description={job.description} />
+          </div>
         ))}
       </div>
     </section>

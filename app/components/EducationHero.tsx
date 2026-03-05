@@ -1,80 +1,79 @@
 "use client";
-import { Card, Typography, Avatar, Collapse, Row, Col } from "antd";
+
+import { Collapse } from "antd";
 import { education } from "../data/data";
-const { Title, Text, Paragraph } = Typography;
 
 export const EducationHero = () => {
   return (
     <section>
-      <Title level={3}>Education</Title>
-      <Card
-        style={{ maxWidth: 800, margin: "0" }}
-        className="shadow-sm border-none"
-      >
-        <Row gutter={[24, 16]} align="top">
-          <Col
-            xs={24}
-            sm={6}
-            className="flex justify-center"
-            style={{ display: "flex", justifyContent: "center" }}
-          >
-            {education.picture && (
-              <Avatar
-                src={education.picture}
-                size={100}
-                className="rounded-lg shadow-sm"
-                style={{ objectFit: "cover" }}
-              />
-            )}
-          </Col>
+      <div className="mb-7">
+        <h2 className="section-heading">Education</h2>
+        <div className="section-rule" />
+      </div>
 
-          <Col xs={24} sm={18} className="text-center sm:text-left">
-            <Title
-              level={4}
-              style={{ margin: "0 0 4px 0" }}
-              className="text-lg sm:text-xl"
-            >
+      <div
+        className="card-base relative max-w-[800px] px-8 py-7"
+        style={{ position: "relative" }}
+      >
+        <div className="card-accent-bar" />
+
+        <div className="flex gap-5 items-stretch">
+          {/* Logo */}
+          {education.picture && (
+            <div className="logo-circle">
+              <img src={education.picture} alt="school" />
+            </div>
+          )}
+
+          {/* Vertical divider */}
+          <div
+            className="w-[1.5px] flex-shrink-0 self-stretch rounded-[99px] min-h-[80px]"
+            style={{ background: "linear-gradient(to bottom, #ede9e3, transparent)" }}
+          />
+
+          {/* Content */}
+          <div className="flex-1 min-w-0">
+            <h3 className="text-[18px] text-[#2d2520] mb-1 mt-0" style={{ fontFamily: "var(--font-display)" }}>
               {education.school}
-            </Title>
-            <Text strong className="block sm:inline">
+            </h3>
+            <p className="text-[14px] font-semibold text-[#4a3728] mb-1 mt-0" style={{ fontFamily: "var(--font-body)" }}>
               {education.degree}
-            </Text>
-            <Paragraph type="secondary" style={{ margin: "4px 0" }}>
-              {education.duration} <span className="hidden sm:inline">|</span>{" "}
-              <br className="sm:hidden" /> GPAX: {education.gpax}
-            </Paragraph>
+            </p>
+            <p className="text-[13px] text-[#a89880] mb-3 mt-0" style={{ fontFamily: "var(--font-body)" }}>
+              {education.duration} &nbsp;·&nbsp; GPAX: {education.gpax}
+            </p>
 
             <Collapse
               ghost
               bordered={false}
-              className="mt-2 custom-collapse -ml-4 sm:ml-0"
+              className="edu-collapse"
+              style={{ marginLeft: -8 }}
               items={[
                 {
                   key: "1",
-                  label: (
-                    <span className="text-gray-400 hover:text-blue-500 transition-colors text-[10px] sm:text-xs font-medium uppercase tracking-wider">
-                      More Info
-                    </span>
-                  ),
-                  style: { padding: 0 },
+                  label: <span className="collapse-label">More Info</span>,
                   children: (
-                    <div className="text-left pl-4 sm:pl-0">
+                    <div className="pl-2">
                       <div className="mb-4">
-                        <Text strong>Relevant Courses:</Text>
-                        <ul className="list-disc list-inside mt-1 space-y-1">
+                        <p className="text-[12px] font-semibold text-[#4a3728] uppercase tracking-[0.6px] mb-2 mt-0" style={{ fontFamily: "var(--font-body)" }}>
+                          Relevant Courses
+                        </p>
+                        <ul className="m-0 pl-4 flex flex-col gap-1 list-disc">
                           {education.courses.map((course, idx) => (
-                            <li key={idx}>
-                              <Text className="text-gray-600">{course}</Text>
+                            <li key={idx} className="text-[13px] text-[#6b5a4e]" style={{ fontFamily: "var(--font-body)" }}>
+                              {course}
                             </li>
                           ))}
                         </ul>
                       </div>
                       <div>
-                        <Text strong>Achievements & Activities:</Text>
-                        <ul className="list-disc list-inside mt-1 space-y-1">
+                        <p className="text-[12px] font-semibold text-[#4a3728] uppercase tracking-[0.6px] mb-2 mt-0" style={{ fontFamily: "var(--font-body)" }}>
+                          Achievements & Activities
+                        </p>
+                        <ul className="m-0 pl-4 flex flex-col gap-1 list-disc">
                           {education.description.map((item, idx) => (
-                            <li key={idx}>
-                              <Text className="text-gray-600">{item}</Text>
+                            <li key={idx} className="text-[13px] text-[#6b5a4e]" style={{ fontFamily: "var(--font-body)" }}>
+                              {item}
                             </li>
                           ))}
                         </ul>
@@ -84,20 +83,9 @@ export const EducationHero = () => {
                 },
               ]}
             />
-          </Col>
-        </Row>
-      </Card>
-
-      <style jsx global>{`
-        .custom-collapse .ant-collapse-header {
-          padding: 4px 0 !important; /* Forces the header height to be smaller */
-          display: inline-flex !important; /* Keeps the arrow and text tightly grouped */
-          align-items: center;
-        }
-        .custom-collapse .ant-collapse-expand-icon {
-          padding-inline-end: 4px !important; /* Reduces space after the arrow */
-        }
-      `}</style>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };

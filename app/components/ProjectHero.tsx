@@ -1,188 +1,74 @@
 "use client";
 
-import { Card, Col, Row, Tag, Typography, Space, Button } from "antd";
-import {
-  GithubOutlined,
-  CalendarOutlined,
-  CodeOutlined,
-} from "@ant-design/icons";
 import { projects } from "../data/data";
-
-const { Title, Paragraph, Text } = Typography;
+import { CalendarOutlined, CodeOutlined, GithubOutlined } from "@ant-design/icons";
 
 export const ProjectHero = () => {
-  const getGradient = (color: string) => {
-    switch (color) {
-      case "blue":
-        return "from-blue-50 to-indigo-50 text-blue-700";
-      case "cyan":
-        return "from-cyan-50 to-blue-50 text-cyan-700";
-      case "purple":
-        return "from-purple-50 to-fuchsia-50 text-purple-700";
-      case "green":
-        return "from-emerald-50 to-green-50 text-emerald-700";
-      case "magenta":
-        return "from-pink-50 to-rose-50 text-pink-700";
-      default:
-        return "from-gray-50 to-gray-100 text-gray-700";
-    }
-  };
-
   return (
-    <section style={{ padding: "40px 0" }}>
-      <div style={{ marginBottom: 40 }}>
-        <Title level={2} style={{ margin: 0, fontWeight: 700 }}>
-          Featured Projects
-        </Title>
-        <div className="h-1 w-12 bg-linear-to-r from-[#1677ff] to-[#4096ff] mt-2 rounded-full" />
+    <section>
+      <div className="mb-7">
+        <h2 className="section-heading">Featured Projects</h2>
+        <div className="section-rule" />
       </div>
 
-      <Row gutter={[32, 32]}>
+      <div className="grid gap-5" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))" }}>
         {projects.map((project, index) => (
-          <Col key={index} xs={24} lg={12}>
-            <Card
-              hoverable
-              style={{
-                height: "100%",
-                borderRadius: 20,
-                overflow: "hidden",
-                border: "none",
-                boxShadow: "0 10px 40px -10px rgba(0,0,0,0.08)",
-                display: "flex",
-                flexDirection: "column",
-              }}
-              cover={
-                <div
-                  style={{
-                    overflow: "hidden",
-                    height: 220,
-                    position: "relative",
-                  }}
-                >
-                  <div
-                    style={{
-                      position: "absolute",
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                      height: "40%",
-                      background:
-                        "linear-gradient(to top, rgba(0,0,0,0.05), transparent)",
-                      zIndex: 1,
-                    }}
-                  />
-                  <img
-                    alt={project.name}
-                    src={project.picturePath}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      transition: "transform 0.4s ease",
-                    }}
-                    className="project-image"
-                  />
-                </div>
-              }
-            >
-              <div style={{ flex: 1 }}>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "flex-start",
-                    marginBottom: 12,
-                  }}
-                >
-                  <Title level={4} style={{ margin: 0, fontSize: "1.25rem" }}>
-                    {project.name}
-                  </Title>
-                  <Tag
-                    icon={<CalendarOutlined />}
-                    style={{
-                      margin: 0,
-                      background: "#f8fafc",
-                      color: "#64748b",
-                      alignItems: "center",
-                      display: "flex",
-                      gap: 4,
-                      border: "none",
-                    }}
-                  >
-                    {project.year}
-                  </Tag>
-                </div>
+          <div key={index} className="project-card">
 
-                <Paragraph
-                  type="secondary"
-                  style={{
-                    marginBottom: 16,
-                    fontSize: "15px",
-                    lineHeight: "1.6",
-                  }}
-                >
-                  {project.description}
-                </Paragraph>
+            {/* Cover image */}
+            <div className="h-[200px] overflow-hidden bg-[#f0ece7] relative">
+              <div className="absolute inset-0 bg-gradient-to-t from-[rgba(45,37,32,0.08)] to-transparent z-10" />
+              <img
+                alt={project.name}
+                src={project.picturePath}
+                className="project-img w-full h-full object-cover transition-transform duration-[400ms] ease-in-out"
+              />
+            </div>
 
-                <div style={{ marginBottom: 20 }}>
-                  <Space size={[0, 8]} wrap>
-                    {project.features.map((feature, i) => (
-                      <span
-                        key={i}
-                        className={`px-3 py-1 rounded-full text-xs font-medium bg-linear-to-r ${getGradient(
-                          project.primaryColor
-                        )}`}
-                      >
-                        {feature}
-                      </span>
-                    ))}
-                  </Space>
-                </div>
+            {/* Card body */}
+            <div className="p-[18px_20px] flex flex-col flex-1">
+              <div className="flex justify-between items-start mb-2.5">
+                <h3 className="text-[17px] text-[#2d2520] m-0 leading-[1.3]" style={{ fontFamily: "var(--font-display)" }}>
+                  {project.name}
+                </h3>
+                <span className="text-[11px] font-semibold text-[#a89880] bg-[#f0ece7] px-2 py-0.5 rounded-md flex-shrink-0 ml-2 flex items-center gap-1" style={{ fontFamily: "var(--font-body)" }}>
+                  <CalendarOutlined style={{ fontSize: 10 }} />
+                  {project.year}
+                </span>
               </div>
 
-              <div
-                style={{
-                  marginTop: "auto",
-                  borderTop: "1px solid #f0f0f0",
-                  paddingTop: 16,
-                }}
-              >
-                <Text
-                  type="secondary"
-                  style={{ fontSize: 12, display: "block", marginBottom: 8 }}
-                >
-                  <CodeOutlined /> View Source Code:
-                </Text>
-                <Space wrap size={8}>
+              <p className="text-[13px] text-[#7a6455] leading-[1.65] mb-3.5 font-light" style={{ fontFamily: "var(--font-body)" }}>
+                {project.description}
+              </p>
+
+              {/* Feature tags */}
+              <div className="flex flex-wrap gap-1.5 mb-4">
+                {project.features.map((feature, i) => (
+                  <span key={i} className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-white border-[1.5px] border-[#ede9e3] text-[#6b5a4e]" style={{ fontFamily: "var(--font-body)" }}>
+                    {feature}
+                  </span>
+                ))}
+              </div>
+
+              {/* Repo links */}
+              <div className="mt-auto border-t border-[#ede9e3] pt-3.5">
+                <p className="text-[11px] text-[#a89880] mb-2 mt-0 uppercase tracking-[0.8px] font-semibold flex items-center gap-1.5" style={{ fontFamily: "var(--font-body)" }}>
+                  <CodeOutlined style={{ fontSize: 11 }} />
+                  Source Code
+                </p>
+                <div className="flex flex-wrap gap-1.5">
                   {project.repo.map((repo, repoIndex) => (
-                    <Button
-                      key={repoIndex}
-                      size="small"
-                      icon={<GithubOutlined />}
-                      onClick={() => window.open(repo.link, "_blank")}
-                      style={{
-                        borderRadius: 6,
-                        fontSize: 12,
-                        borderColor: "#e2e8f0",
-                        color: "#475569",
-                      }}
-                      className="hover:border-blue-400 hover:text-blue-500 transition-colors"
-                    >
+                    <a key={repoIndex} href={repo.link} target="_blank" rel="noreferrer" className="repo-btn">
+                      <GithubOutlined style={{ fontSize: 12 }} />
                       {repo.name}
-                    </Button>
+                    </a>
                   ))}
-                </Space>
+                </div>
               </div>
-            </Card>
-          </Col>
+            </div>
+          </div>
         ))}
-      </Row>
-
-      <style jsx>{`
-        .ant-card:hover .project-image {
-          transform: scale(1.05);
-        }
-      `}</style>
+      </div>
     </section>
   );
 };

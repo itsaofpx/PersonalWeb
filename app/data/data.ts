@@ -1,20 +1,33 @@
 const jobExperience = [
   {
+    company: "Bluebik Group PCL.",
+    position: "Software Engineer",
+    duration: "Jan 2026 - Present",
+    description: [
+      "Designed normalized PostgreSQL schemas supporting insurance workflow systems used by internal stakeholders",
+      "Translated stakeholder requirements into technical specifications, database models, and system workflows",
+      "Collaborated with Thai Life Insurance stakeholders to refine requirements and ensure alignment",
+    ],
+    employmentType: "Internship",
+    picture: "https://positioningmag.com/wp-content/uploads/2022/01/1-1.png",
+    location: "Bangkok, Thailand",
+  },
+  {
     company: "National Central University",
     position: "Researcher",
-    duration: "Sep 2025 - Present",
+    duration: "Sep 2025 - Jan 2026",
     description: [
       "Developed an AI-based model to predict user-associated keywords from EEG brainwave data when viewing visual stimuli.",
       "Implemented and optimized data pipelines using Python for EEG signal classification.",
       "Enhanced the model to support bilingual brainwave data for cross-linguistic prediction and analysis.",
     ],
-    employmentType: "Internship",
+    employmentType: "Exchange",
     picture:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQiZr78X8FXFt2rJ4THv6H2063G-YOrxH_pQ&s",
     location: "Taoyuan, Taiwan",
   },
   {
-    company: "MYORDER INTELLIGENCE CO., LTD.",
+    company: "MyOrder Co., Ltd.",
     position: "Software Engineer",
     duration: "May 2025 - Aug 2025",
     description: [
@@ -28,7 +41,7 @@ const jobExperience = [
     location: "Bangkok, Thailand",
   },
   {
-    company: "FUTURE SKILL CO., LTD.",
+    company: "Future Skill Co., Ltd.",
     position: "Software Engineer",
     duration: "Feb 2025 - May 2025",
     description: [
@@ -38,7 +51,6 @@ const jobExperience = [
     ],
     employmentType: "Internship",
     picture:
-      // "https://media.licdn.com/dms/image/v2/D560BAQHIQdclkGuWwQ/company-logo_200_200/company-logo_200_200/0/1682226805577/futureskill_logo?e=2147483647&v=beta&t=Z8AI2mE3_cerbsqNlVJP3ZOzbISALhKZpQTr-zc2jOU",
       "https://assets.futureskill.co/business%2Feb269202-7dcc-444f-a692-d1b6701e5960.webp",
     location: "Bangkok, Thailand",
   },
@@ -205,4 +217,74 @@ const projects = [
   },
 ];
 
-export { certs, education, jobExperience, projects };
+const skillSections = [
+  {
+    title: "Programming",
+    data: [
+      "Python",
+      "Java",
+      "JavaScript",
+      "TypeScript",
+      "Golang",
+      "Dart",
+      "C++",
+      "C#",
+      "HTML",
+      "CSS",
+      "SQL",
+    ],
+  },
+  {
+    title: "Frameworks & Tools",
+    data: [
+      "React",
+      "Next.js",
+      "Node.js",
+      "Angular",
+      "NestJS",
+      "Fiber",
+      "Tailwind CSS",
+      "Flutter",
+      "AWS",
+      "GCP",
+      "Docker",
+      "PostgreSQL",
+      "Postman",
+      "Bruno",
+      "Figma",
+      "Jira",
+    ],
+  },
+  {
+    title: "Soft Skills",
+    data: [
+      "Collaborative Team Player",
+      "Agile Practitioner",
+      "Excellent Communicator",
+      "Analytical Problem Solver",
+      "Resilient Performer",
+      "Curious Learner",
+      "Self-Motivated Improver",
+      "Disciplined Professional",
+    ],
+  },
+  {
+    title: "Languages",
+    data: ["Thai (Native)", "English B2 (Upper-Intermediate)"],
+  },
+];
+
+const contactData = {
+  email: "podjaninaof2@gmail.com",
+  phone: "0957759081",
+  resumeUrl: "/data/resume/resume.pdf",
+};
+
+export {
+  certs,
+  education,
+  jobExperience,
+  skillSections,
+  projects,
+  contactData,
+};

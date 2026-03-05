@@ -5,12 +5,14 @@ import {
   HomeOutlined,
   InstagramOutlined,
   LinkedinOutlined,
-  SpotifyOutlined,
+  MailOutlined,
   TrophyOutlined,
 } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import ContactModal from "./Modal/ContactModal";
+import { contactData } from "../data/data";
 
-// Tighter sizing for mobile (w-9) scaling up to desktop (sm:w-11)
 const iconStyle =
   "flex items-center justify-center w-9 h-9 sm:w-11 sm:h-11 rounded-full transition-all duration-300 cursor-pointer text-gray-600 hover:text-white hover:shadow-md";
 
@@ -65,6 +67,7 @@ const IconButton = ({
 
 const NavigatorBar = () => {
   const router = useRouter();
+  const [open, setOpen] = useState(false);
 
   const handleClick = (url: string) => {
     if (url.startsWith("http")) {
@@ -73,76 +76,79 @@ const NavigatorBar = () => {
       router.push(url);
     }
   };
-
   return (
-    <section
-      className="
-        fixed bottom-6 left-1/2 -translate-x-1/2
-        flex items-center gap-1 sm:gap-4
-        bg-white/80 backdrop-blur-xl saturate-150
-        px-2 py-2 sm:px-4
-        rounded-full
-        shadow-2xl border border-white/40
-        z-50
-        w-fit whitespace-nowrap
-      "
-    >
-      <div className="flex items-center gap-1 sm:gap-2">
-        <IconButton
-          icon={<HomeOutlined />}
-          label="Home"
-          hoverGradient="hover:bg-linear-to-br hover:from-gray-700 hover:to-gray-900"
-          clickHandler={() => handleClick("/")}
-        />
+    <>
+      <section
+        className="
+          fixed bottom-6 left-1/2 -translate-x-1/2
+          flex items-center gap-1 sm:gap-4
+          bg-white/80 backdrop-blur-xl saturate-150
+          px-2 py-2 sm:px-4
+          rounded-full
+          shadow-2xl border border-white/40
+          z-50
+          w-fit whitespace-nowrap
+        "
+      >
+        <div className="flex items-center gap-1 sm:gap-2">
+          <IconButton
+            icon={<HomeOutlined />}
+            label="Home"
+            hoverGradient="hover:bg-linear-to-br hover:from-gray-700 hover:to-gray-900"
+            clickHandler={() => handleClick("/")}
+          />
 
-        <IconButton
-          icon={<TrophyOutlined />}
-          label="Certifications"
-          hoverGradient="hover:bg-linear-to-br hover:from-yellow-400 hover:to-yellow-600"
-          clickHandler={() => handleClick("/cert")}
-        />
-      </div>
+          <IconButton
+            icon={<TrophyOutlined />}
+            label="Certifications"
+            hoverGradient="hover:bg-linear-to-br hover:from-yellow-400 hover:to-yellow-600"
+            clickHandler={() => handleClick("/cert")}
+          />
+        </div>
 
-      <div className="h-5 w-px bg-gray-300 mx-1" />
+        <div className="h-5 w-px bg-gray-300 mx-1" />
 
-      <div className="flex items-center gap-1 sm:gap-2 flex-nowrap">
-        <IconButton
-          icon={<LinkedinOutlined />}
-          label="LinkedIn"
-          hoverGradient="hover:bg-linear-to-br hover:from-blue-500 hover:to-blue-700"
-          clickHandler={() =>
-            handleClick(
-              "https://www.linkedin.com/in/podjanin-wachirawittayakul-293820359/"
-            )
-          }
-        />
+        <div className="flex items-center gap-1 sm:gap-2 flex-nowrap">
+          <IconButton
+            icon={<LinkedinOutlined />}
+            label="LinkedIn"
+            hoverGradient="hover:bg-linear-to-br hover:from-blue-500 hover:to-blue-700"
+            clickHandler={() =>
+              handleClick(
+                "https://www.linkedin.com/in/podjanin-wachirawittayakul-293820359/"
+              )
+            }
+          />
 
-        <IconButton
-          icon={<InstagramOutlined />}
-          label="Instagram"
-          hoverGradient="hover:bg-linear-to-br hover:from-purple-500 hover:to-pink-500"
-          clickHandler={() =>
-            handleClick("https://www.instagram.com/its_aofpx/")
-          }
-        />
+          <IconButton
+            icon={<InstagramOutlined />}
+            label="Instagram"
+            hoverGradient="hover:bg-linear-to-br hover:from-purple-500 hover:to-pink-500"
+            clickHandler={() =>
+              handleClick("https://www.instagram.com/its_aofpx/")
+            }
+          />
 
-        <IconButton
-          icon={<GithubOutlined />}
-          label="GitHub"
-          hoverGradient="hover:bg-linear-to-br hover:from-gray-800 hover:to-black"
-          clickHandler={() => handleClick("https://github.com/itsaofpx")}
-        />
+          <IconButton
+            icon={<GithubOutlined />}
+            label="GitHub"
+            hoverGradient="hover:bg-linear-to-br hover:from-gray-800 hover:to-black"
+            clickHandler={() => handleClick("https://github.com/itsaofpx")}
+          />
 
-        <IconButton
-        icon={ <SpotifyOutlined />}
-        label="Spotify"
-        hoverGradient="hover:bg-linear-to-br hover:from-green-500 hover:to-green-700"
-        clickHandler={() =>
-          handleClick("https://open.spotify.com/user/31wnv7vgb2tj5xzngjzyb6izg5qy?si=681ff2b8a2b04e9d")
-        }
-        />
-      </div>
-    </section>
+          <div className="h-5 w-px bg-gray-300 mx-1" />
+
+          <IconButton
+            icon={<MailOutlined />}
+            label="Contact"
+            hoverGradient="hover:bg-linear-to-br hover:from-gray-700 hover:to-gray-900"
+            clickHandler={() => setOpen(true)}
+          />
+        </div>
+      </section>
+
+      <ContactModal open={open} setOpen={setOpen} email={contactData.email} phone={contactData.phone} resumeUrl={contactData.resumeUrl} />
+    </>
   );
 };
 

@@ -1,12 +1,10 @@
 "use client";
 
-import { Card, Col, Row, Typography, Tag, Modal } from "antd";
-import { SafetyCertificateOutlined, EyeOutlined } from "@ant-design/icons";
+import { Modal } from "antd";
+import { EyeOutlined, SafetyCertificateOutlined } from "@ant-design/icons";
 import Image from "next/image";
 import { useState } from "react";
 import { certs } from "../data/data";
-
-const { Title, Text } = Typography;
 
 export const CertHero = () => {
   const [previewOpen, setPreviewOpen] = useState(false);
@@ -19,131 +17,87 @@ export const CertHero = () => {
     setPreviewOpen(true);
   };
 
-  const getGradient = (color: string) => {
-    switch (color) {
-      case "blue":
-        return "from-blue-50 to-indigo-50 text-blue-700 border-blue-100";
-      case "cyan":
-        return "from-cyan-50 to-blue-50 text-cyan-700 border-cyan-100";
-      case "purple":
-        return "from-purple-50 to-fuchsia-50 text-purple-700 border-purple-100";
-      case "magenta":
-        return "from-pink-50 to-rose-50 text-pink-700 border-pink-100";
-      default:
-        return "from-gray-50 to-gray-100 text-gray-700 border-gray-100";
-    }
-  };
-
   return (
-    <section className="w-full py-10">
-      <div className="mb-8">
-        <Title level={3} style={{ margin: 0 }}>
-          Certifications
-        </Title>
-        <div className="h-1 w-16 bg-linear-r from-orange-400 to-red-400 rounded-full mt-2" />
+    <section>
+      <div className="mb-7">
+        <h2 className="section-heading">Certifications</h2>
+        <div className="section-rule" />
       </div>
 
-      <Row gutter={[24, 24]}>
+      <div className="grid gap-4" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))" }}>
         {certs.map((cert, index) => (
-          <Col key={index} xs={24} sm={12}>
-            <Card
-              hoverable
-              onClick={() => openPreview(cert)}
-              style={{
-                borderRadius: 16,
-                height: "100%",
-                boxShadow: "0 4px 20px rgba(0,0,0,0.03)",
-                overflow: "hidden",
-                border: "none",
-              }}
-              className="group transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-              cover={
-                <div
-                  className="relative w-full bg-gray-50 overflow-hidden group-hover:bg-gray-100 transition-colors"
-                  style={{ height: 192, position: "relative" }}
-                >
-                  {/* View Icon Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity z-10">
-                    <div className="bg-white/90 backdrop-blur px-3 py-1 rounded-full shadow-sm text-xs font-medium text-gray-700 flex items-center gap-2">
-                      <EyeOutlined /> View
-                    </div>
-                  </div>
+          <div key={index} className="cert-card" onClick={() => openPreview(cert)}>
 
-                  <Image
-                    src={cert.previewPath}
-                    alt={cert.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 500px"
-                    className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
-                    priority={index < 2}
-                  />
-                </div>
-              }
-            >
-              <div className="flex flex-col h-full gap-3">
-                <div className="flex justify-between items-start">
-                  <div className="flex-1">
-                    <Title
-                      level={5}
-                      style={{ marginBottom: 4, fontSize: "1rem" }}
-                    >
-                      {cert.title}
-                    </Title>
-                    <Text
-                      type="secondary"
-                      className="text-xs flex items-center gap-1"
-                    >
-                      <SafetyCertificateOutlined /> {cert.provider}
-                    </Text>
-                  </div>
-                  <Tag className="m-0 bg-gray-100 text-gray-500 rounded-md font-medium border-0">
-                    {cert.year}
-                  </Tag>
-                </div>
-
-                <div className="mt-auto pt-3 border-t border-gray-50 flex flex-wrap gap-2">
-                  {cert.skillTag.map((skill: string, i: number) => (
-                    <span
-                      key={i}
-                      className={`text-[10px] px-2 py-1 rounded-md border bg-linear-br ${getGradient(
-                        cert.color || "blue"
-                      )}`}
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+            {/* Image area */}
+            <div className="relative h-[180px] bg-white overflow-hidden">
+              <div className="cert-overlay absolute inset-0 bg-[rgba(45,37,32,0.3)] flex items-center justify-center opacity-0 transition-opacity duration-200 z-10">
+                <span className="text-[13px] font-medium text-white bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/30 flex items-center gap-1.5">
+                  <EyeOutlined style={{ fontSize: 12 }} />
+                  View
+                </span>
               </div>
-            </Card>
-          </Col>
-        ))}
-      </Row>
+              <Image
+                src={cert.previewPath}
+                alt={cert.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 500px"
+                className="cert-img object-contain transition-transform duration-[400ms] ease-in-out"
+                priority={index < 2}
+              />
+            </div>
 
-      {/* 🔍 Preview Modal */}
+            {/* Info area */}
+            <div className="p-[16px_18px]">
+              <div className="flex justify-between items-start mb-2.5">
+                <div className="flex-1">
+                  <p className="text-[15px] text-[#2d2520] m-0 mb-1 leading-[1.3]" style={{ fontFamily: "var(--font-display)" }}>
+                    {cert.title}
+                  </p>
+                  <p className="text-[12px] text-[#a89880] m-0 flex items-center gap-1" style={{ fontFamily: "var(--font-body)" }}>
+                    <SafetyCertificateOutlined style={{ fontSize: 11 }} />
+                    {cert.provider}
+                  </p>
+                </div>
+                <span className="text-[11px] font-semibold text-[#a89880] bg-[#f0ece7] px-2 py-0.5 rounded-md flex-shrink-0 ml-2" style={{ fontFamily: "var(--font-body)" }}>
+                  {cert.year}
+                </span>
+              </div>
+
+              <div className="border-t border-[#ede9e3] pt-2.5 flex flex-wrap gap-1.5">
+                {cert.skillTag.map((skill: string, i: number) => (
+                  <span key={i} className="text-[10px] font-medium px-2 py-0.5 rounded-md bg-white border-[1.5px] border-[#ede9e3] text-[#6b5a4e]" style={{ fontFamily: "var(--font-body)" }}>
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Preview Modal */}
       <Modal
         open={previewOpen}
         title={null}
         footer={null}
         onCancel={() => setPreviewOpen(false)}
-        width={1200}
+        width={1000}
         centered
-        className="rounded-xl overflow-hidden p-0"
+        className="cert-modal"
       >
-        <div className="relative w-full aspect-4/3 bg-gray-900 flex items-center justify-center">
+        <div className="relative w-full bg-[#1a1410]" style={{ aspectRatio: "4/3" }}>
           {previewImage && (
-            <Image
-              src={previewImage}
-              alt={previewTitle}
-              fill
-              className="object-contain"
-            />
+            <Image src={previewImage} alt={previewTitle} fill style={{ objectFit: "contain" }} />
           )}
         </div>
-        <div className="p-4 bg-white flex justify-between items-center">
-          <Title level={5} style={{ margin: 0 }}>
+        <div className="px-5 py-4 flex justify-between items-center border-t border-[#ede9e3]">
+          <p className="text-[16px] m-0" style={{ fontFamily: "var(--font-display)" }}>
             {previewTitle}
-          </Title>
-          <Tag color="blue">Verified</Tag>
+          </p>
+          <span className="text-[11px] font-semibold px-3 py-1 rounded-full flex items-center gap-1.5" style={{ fontFamily: "var(--font-body)" }}>
+            <SafetyCertificateOutlined style={{ fontSize: 11 }} />
+            Verified
+          </span>
         </div>
       </Modal>
     </section>
