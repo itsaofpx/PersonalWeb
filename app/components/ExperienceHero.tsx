@@ -14,7 +14,7 @@ type Job = (typeof jobExperience)[number];
 const JobResponsibilities = ({ description }: { description: string[] }) => (
   <div className="mt-1 pt-1">
     {/* gradient divider */}
-    <div className="h-px w-full bg-gradient-to-r from-[#cdc9c3] to-[#ede9e3] mb-/"></div>
+    <div className="h-px w-full bg-gradient-to-r from-[#cdc9c3] to-[#ede9e3] mb-3"></div>
 
     <Collapse
       ghost
