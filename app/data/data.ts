@@ -2,7 +2,21 @@ const jobExperience = [
   {
     company: "Bluebik Group PCL.",
     position: "Software Engineer",
-    duration: "Jan 2026 - Present",
+    duration: "May 2026 - Present",
+    description: [
+      "Designed normalized PostgreSQL schemas supporting insurance workflow systems used by internal stakeholders",
+      "Translated stakeholder requirements into technical specifications, database models, and system workflows",
+      "Collaborated with Thai Life Insurance stakeholders to refine requirements and ensure alignment",
+    ],
+    employmentType: "Full-Time",
+    picture:
+      "https://media.licdn.com/dms/image/v2/D560BAQEG_J85qNHm0g/company-logo_200_200/B56ZwoQaiyJoAI-/0/1770201918290/bluebikgroup_logo?e=2147483647&v=beta&t=A-RWynkLl_269F7j1P3VeCtvJg6Fd0NG2fj99lv1LSw",
+    location: "Bangkok, Thailand",
+  },
+  {
+    company: "Bluebik Group PCL.",
+    position: "Software Engineer",
+    duration: "Jan 2026 - May 2026",
     description: [
       "Designed normalized PostgreSQL schemas supporting insurance workflow systems used by internal stakeholders",
       "Translated stakeholder requirements into technical specifications, database models, and system workflows",
