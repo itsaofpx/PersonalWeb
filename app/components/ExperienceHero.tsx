@@ -51,7 +51,7 @@ const EmploymentTag = ({ type }: { type: string }) => {
   const tagStyle = employmentColors[type] || employmentColors.default;
   return (
     <span
-      className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full tracking-[0.3px] inline-block"
+      className="text-[10px] font-semibold px-2.5 py-0.5 rounded-full tracking-[0.3px] inline-block"
       style={{ background: tagStyle.bg, color: tagStyle.text, border: `1px solid ${tagStyle.border}` }}
     >
       {type}
@@ -99,9 +99,9 @@ const DesktopJobCard = ({ job }: { job: Job }) => (
 );
 
 const MobileJobCard = ({ job }: { job: Job }) => (
-  <div className="flex sm:hidden items-start gap-4">
-    {/* Logo */}
-    <div className="w-20 h-20 overflow-hidden flex-shrink-0 flex items-center justify-center">
+  <div className="flex sm:hidden items-start gap-3">
+    {/* Logo — smaller on SE */}
+    <div className="w-14 h-14 overflow-hidden flex-shrink-0 flex items-center justify-center">
       <img src={job.picture} alt={job.company} className="w-full h-full object-cover" />
     </div>
 
@@ -109,18 +109,20 @@ const MobileJobCard = ({ job }: { job: Job }) => (
 
     {/* Stacked content */}
     <div className="flex-1 min-w-0">
-      <div className="text-[15px] text-[#2d2520] m-0 leading-snug font-semibold" style={{ fontFamily: "var(--font-display)" }}>
+      <div className="text-[14px] text-[#2d2520] m-0 leading-snug font-semibold break-words" style={{ fontFamily: "var(--font-display)" }}>
         {job.company}
       </div>
 
-      <p className="text-[11px] text-[#b0a090] flex-shrink-0 whitespace-nowrap">{job.location}</p>
+      <p className="text-[8.5px] text-[#b0a090] m-0 mt-0.5 break-words">{job.location}</p>
 
-      <div className="text-[13px] text-[#4a3728] m-0 mt-0.5 font-semibold">
+      {/* Position on its own line */}
+      <p className="text-[10px] text-[#4a3728] font-semibold m-0 mt-0.5 break-words leading-snug">
         {job.position}
-      </div>
+      </p>
 
-      <div className="flex items-center gap-1.5 mt-1.5 flex-wrap">
-        <span className="text-[11px] text-[#a89880] bg-[#f5f0ea] border border-[#ede9e3] px-2 py-0.5 rounded-md font-medium">
+      {/* Duration badge on its own line */}
+      <div className="mt-1.5">
+        <span className="text-[8.5px] text-[#a89880] bg-[#f5f0ea] border border-[#ede9e3] px-2 py-0.5 rounded-md font-medium inline-block">
           {job.duration}
         </span>
       </div>
