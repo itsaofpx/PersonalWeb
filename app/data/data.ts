@@ -2,7 +2,7 @@ const jobExperience = [
   {
     company: "Bluebik Group PCL.",
     position: "Software Engineer",
-    duration: "Jan 2026 - Present",
+    duration: "Jan 2026 - May 2026",
     description: [
       "Designed normalized PostgreSQL schemas supporting insurance workflow systems used by internal stakeholders",
       "Translated stakeholder requirements into technical specifications, database models, and system workflows",
@@ -61,7 +61,7 @@ const education = {
   school: "Kasetsart University",
   degree: "Bachelor's Degree in Computer Science",
   duration: "2022 - 2026",
-  gpax: "3.46 / 4.00",
+  gpax: "3.49 / 4.00",
   courses: [
     "Data Structures and Algorithms",
     "Database Systems",
@@ -85,6 +85,14 @@ const education = {
 };
 
 const certs = [
+  {
+    title: "Certificate of Internship",
+    previewPath: "/data/certs/bbik.png",
+    provider: "Bluebik Group PCL.",
+    year: "2026",
+    skillTag: ["Backend Engineer", "Sprint Boot", "Agile Development"],
+    color: "Orange",
+  },
   {
     title: "Microservices Architecture",
     previewPath: "/data/certs/microservices.png",
