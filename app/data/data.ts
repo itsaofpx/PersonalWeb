@@ -289,6 +289,127 @@ const contactData = {
   resumeUrl: "/data/resume/resume.pdf",
 };
 
+const aboutData = {
+  name: "Podjanin Wachirawittayakul",
+  nickname: "Aof",
+  role: "Software Engineer",
+  photo: "/data/picture/bear.png",
+  location: "Bangkok, Thailand",
+  availability: "Open to full-time opportunities",
+  tagline:
+    "A Computer Science graduate who enjoys turning real-world problems into reliable, well-crafted software.",
+  summary: [
+    "I'm a Computer Science graduate from Kasetsart University with hands-on experience across four professional roles, spanning full-stack engineering, backend systems, and applied AI research. I care deeply about writing clean, maintainable code and delivering features that genuinely make people's work easier.",
+    "Throughout my internships I've owned features end-to-end—gathering requirements, designing database schemas, building APIs, and collaborating closely with stakeholders to ship on time. I approach every project with curiosity, a strong sense of ownership, and a commitment to continuous improvement.",
+  ],
+  highlights: [
+    { value: "3.49", label: "GPAX / 4.00" },
+    { value: "4", label: "Professional Roles" },
+    { value: "5", label: "Featured Projects" },
+    { value: "1", label: "Intl. Exchange" },
+  ],
+  values: [
+    {
+      icon: "rocket",
+      title: "End-to-End Ownership",
+      text: "From requirements to deployment, I take full responsibility for the features I build and see them through with care.",
+    },
+    {
+      icon: "team",
+      title: "Collaborative & Communicative",
+      text: "I document clearly, align early with stakeholders, and thrive in Agile teams where communication keeps everyone moving together.",
+    },
+    {
+      icon: "bulb",
+      title: "Curious & Always Learning",
+      text: "New frameworks, new domains, new challenges—I lean in. Growth compounds, and I keep investing in it every day.",
+    },
+    {
+      icon: "safety",
+      title: "Reliable & Detail-Oriented",
+      text: "I value tested, well-structured code and dependable delivery. People can count on the work being done right.",
+    },
+  ],
+  workingStyle: [
+    "Comfortable across the stack—React, Next.js, NestJS, Go, and PostgreSQL—with a backend and systems lean.",
+    "Practiced in Agile, XP, and TDD, having delivered iteratively within cross-functional teams.",
+    "Bilingual and internationally experienced, having studied and researched abroad in Taiwan.",
+    "Motivated by meaningful problems and teams that value quality, honesty, and continuous improvement.",
+  ],
+  seeking:
+    "I'm currently seeking a full-time Software Engineer role—ideally backend or full-stack—where I can contribute to a collaborative team, keep growing as an engineer, and help build products that matter. I'm based in Bangkok and open to new opportunities.",
+};
+
+const journey = {
+  intro:
+    "Every role, every move, and every late night has shaped how I build and how I work. Here's the path so far—and where I'm headed next.",
+  milestones: [
+    {
+      period: "2022",
+      title: "Started B.S. in Computer Science",
+      org: "Kasetsart University",
+      location: "Bangkok, Thailand",
+      type: "education",
+      blurb:
+        "Began my Computer Science journey, building strong foundations in algorithms, systems, and software engineering—and finding a genuine love for turning ideas into working software.",
+    },
+    {
+      period: "2024",
+      title: "National Software Contest — Semi-Finalist",
+      org: "MHESI, Thailand",
+      location: "Thailand",
+      type: "achievement",
+      blurb:
+        "Reached semi-finalist status in Thailand's National Software Contest (NSC), an early sign that I could take an idea from concept to a polished, competitive product.",
+    },
+    {
+      period: "Feb – May 2025",
+      title: "Software Engineer Intern",
+      org: "Future Skill Co., Ltd.",
+      location: "Bangkok, Thailand",
+      type: "work",
+      blurb:
+        "Built a role-based access system and multi-language support for a B2B LMS serving 200+ companies, and contributed to CI/CD pipelines within an Agile team.",
+    },
+    {
+      period: "May – Aug 2025",
+      title: "Software Engineer Intern",
+      org: "MyOrder Co., Ltd.",
+      location: "Bangkok, Thailand",
+      type: "work",
+      blurb:
+        "Owned a full-stack HRMS end-to-end using Angular, NestJS, and PostgreSQL—gathering requirements, designing workflows, and applying TDD from the first line of code.",
+    },
+    {
+      period: "Sep 2025 – Jan 2026",
+      title: "Research Exchange",
+      org: "National Central University",
+      location: "Taoyuan, Taiwan",
+      type: "exchange",
+      blurb:
+        "Won a scholarship to study and research abroad, developing an AI model that predicts keywords from EEG brainwave data—my first real step into applied AI and cross-cultural teamwork.",
+    },
+    {
+      period: "Jan – May 2026",
+      title: "Software Engineer Intern",
+      org: "Bluebik Group PCL.",
+      location: "Bangkok, Thailand",
+      type: "work",
+      blurb:
+        "Designed normalized PostgreSQL schemas for insurance workflow systems and translated stakeholder needs into technical specs, collaborating directly with Thai Life Insurance.",
+    },
+    {
+      period: "2026",
+      title: "Graduated & Ready for What's Next",
+      org: "Open to full-time opportunities",
+      location: "Bangkok, Thailand",
+      type: "now",
+      blurb:
+        "Graduated with a 3.49 GPAX and four professional experiences behind me. Now seeking a full-time Software Engineer role where I can keep growing and build things that matter.",
+    },
+  ],
+};
+
 export {
   certs,
   education,
@@ -296,4 +417,6 @@ export {
   skillSections,
   projects,
   contactData,
+  aboutData,
+  journey,
 };

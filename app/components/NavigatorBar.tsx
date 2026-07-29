@@ -3,10 +3,12 @@
 import {
   GithubOutlined,
   HomeOutlined,
+  HistoryOutlined,
   InstagramOutlined,
   LinkedinOutlined,
   MailOutlined,
   TrophyOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -96,6 +98,20 @@ const NavigatorBar = () => {
             label="Home"
             hoverGradient="hover:bg-linear-to-br hover:from-gray-700 hover:to-gray-900"
             clickHandler={() => handleClick("/")}
+          />
+
+          <IconButton
+            icon={<UserOutlined />}
+            label="About"
+            hoverGradient="hover:bg-linear-to-br hover:from-emerald-500 hover:to-teal-600"
+            clickHandler={() => handleClick("/about")}
+          />
+
+          <IconButton
+            icon={<HistoryOutlined />}
+            label="Journey"
+            hoverGradient="hover:bg-linear-to-br hover:from-orange-400 hover:to-amber-600"
+            clickHandler={() => handleClick("/journey")}
           />
 
           <IconButton
